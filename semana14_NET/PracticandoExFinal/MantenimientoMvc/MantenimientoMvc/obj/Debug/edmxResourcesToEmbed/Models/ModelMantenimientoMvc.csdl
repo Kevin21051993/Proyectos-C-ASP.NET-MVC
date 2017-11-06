@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdnotasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="IdAlumno" />
+    </Key>
+    <Property Name="IdAlumno" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ApeAlumno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NomAlumno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Idesp" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="proce" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="especialidad" Relationship="Self.fk_Alumno_especialidad" FromRole="Alumno" ToRole="especialidad" />
+    <NavigationProperty Name="NOTAS" Relationship="Self.fk_Notas_Alumno" FromRole="Alumno" ToRole="NOTAS" />
+    <NavigationProperty Name="PAGOS" Relationship="Self.fk_PAGOS_Alumno" FromRole="Alumno" ToRole="PAGOS" />
+  </EntityType>
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="IdCurso" />
+    </Key>
+    <Property Name="IdCurso" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NomCurso" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="credito" Type="Int32" />
+    <NavigationProperty Name="NOTAS" Relationship="Self.fk_Notas_Curso" FromRole="Curso" ToRole="NOTAS" />
+  </EntityType>
+  <EntityType Name="especialidad">
+    <Key>
+      <PropertyRef Name="Idesp" />
+    </Key>
+    <Property Name="Idesp" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Nomesp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="costo" Type="Decimal" Precision="8" Scale="1" Nullable="false" />
+    <NavigationProperty Name="Alumno" Relationship="Self.fk_Alumno_especialidad" FromRole="especialidad" ToRole="Alumno" />
+  </EntityType>
+  <EntityType Name="NOTAS">
+    <Key>
+      <PropertyRef Name="IdAlumno" />
+      <PropertyRef Name="IdCurso" />
+    </Key>
+    <Property Name="IdAlumno" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdCurso" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ExaParcial" Type="Single" />
+    <Property Name="ExaFinal" Type="Single" />
+    <NavigationProperty Name="Alumno" Relationship="Self.fk_Notas_Alumno" FromRole="NOTAS" ToRole="Alumno" />
+    <NavigationProperty Name="Curso" Relationship="Self.fk_Notas_Curso" FromRole="NOTAS" ToRole="Curso" />
+  </EntityType>
+  <EntityType Name="PAGOS">
+    <Key>
+      <PropertyRef Name="IdAlumno" />
+      <PropertyRef Name="Ciclo" />
+      <PropertyRef Name="nCuota" />
+    </Key>
+    <Property Name="IdAlumno" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Ciclo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="nCuota" Type="Int32" Nullable="false" />
+    <Property Name="Monto" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Alumno" Relationship="Self.fk_PAGOS_Alumno" FromRole="PAGOS" ToRole="Alumno" />
+  </EntityType>
+  <Association Name="fk_Alumno_especialidad">
+    <End Role="especialidad" Type="Self.especialidad" Multiplicity="1" />
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="especialidad">
+        <PropertyRef Name="Idesp" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="Idesp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Notas_Alumno">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="NOTAS" Type="Self.NOTAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="NOTAS">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PAGOS_Alumno">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="PAGOS" Type="Self.PAGOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="PAGOS">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Notas_Curso">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="NOTAS" Type="Self.NOTAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="NOTAS">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bdnotasEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+    <EntitySet Name="Curso" EntityType="Self.Curso" />
+    <EntitySet Name="especialidad" EntityType="Self.especialidad" />
+    <EntitySet Name="NOTAS" EntityType="Self.NOTAS" />
+    <EntitySet Name="PAGOS" EntityType="Self.PAGOS" />
+    <AssociationSet Name="fk_Alumno_especialidad" Association="Self.fk_Alumno_especialidad">
+      <End Role="especialidad" EntitySet="especialidad" />
+      <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Notas_Alumno" Association="Self.fk_Notas_Alumno">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="NOTAS" EntitySet="NOTAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PAGOS_Alumno" Association="Self.fk_PAGOS_Alumno">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="PAGOS" EntitySet="PAGOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Notas_Curso" Association="Self.fk_Notas_Curso">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="NOTAS" EntitySet="NOTAS" />
+    </AssociationSet>
+    <FunctionImport Name="SPADIALU" ReturnType="Collection(String)">
+      <Parameter Name="AP" Mode="In" Type="String" />
+      <Parameter Name="NOM" Mode="In" Type="String" />
+      <Parameter Name="ES" Mode="In" Type="String" />
+      <Parameter Name="PRO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPALU" ReturnType="Collection(bdnotasModel.SPALU_Result)" />
+    <FunctionImport Name="spanula">
+      <Parameter Name="cod" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPcambia">
+      <Parameter Name="cod" Mode="In" Type="String" />
+      <Parameter Name="AP" Mode="In" Type="String" />
+      <Parameter Name="NOM" Mode="In" Type="String" />
+      <Parameter Name="ES" Mode="In" Type="String" />
+      <Parameter Name="PRO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPESP" ReturnType="Collection(bdnotasModel.SPESP_Result)" />
+    <FunctionImport Name="SPLISALU" ReturnType="Collection(bdnotasModel.SPLISALU_Result)" />
+    <FunctionImport Name="spmes" ReturnType="Collection(bdnotasModel.spmes_Result)">
+      <Parameter Name="an" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spnota" ReturnType="Collection(bdnotasModel.spnota_Result)">
+      <Parameter Name="cod" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SPALU_Result">
+    <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="61" />
+    <Property Type="String" Name="IdAlumno" Nullable="false" MaxLength="5" />
+  </ComplexType>
+  <ComplexType Name="SPESP_Result">
+    <Property Type="String" Name="Idesp" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="Nomesp" Nullable="false" MaxLength="30" />
+    <Property Type="Decimal" Name="costo" Nullable="false" Precision="8" Scale="1" />
+  </ComplexType>
+  <ComplexType Name="SPLISALU_Result">
+    <Property Type="String" Name="IdAlumno" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="ApeAlumno" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="NomAlumno" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Idesp" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="proce" Nullable="true" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="spmes_Result">
+    <Property Type="String" Name="mes" Nullable="true" MaxLength="30" />
+    <Property Type="Decimal" Name="total" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="spnota_Result">
+    <Property Type="String" Name="IdCurso" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="NomCurso" Nullable="false" MaxLength="35" />
+    <Property Type="Single" Name="ExaParcial" Nullable="true" />
+    <Property Type="Single" Name="ExaFinal" Nullable="true" />
+    <Property Type="Single" Name="promedio" Nullable="true" />
+    <Property Type="String" Name="observacion" Nullable="false" MaxLength="11" />
+  </ComplexType>
+</Schema>

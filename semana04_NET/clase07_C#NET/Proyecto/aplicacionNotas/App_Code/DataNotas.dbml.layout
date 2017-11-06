@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataNotas">
+  <DataContextMoniker Name="/DataNotasDataContext" />
+  <nestedChildShapes>
+    <classShape Id="d7a329b4-3e17-42a0-b445-1f562c79f90d" absoluteBounds="0.5, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataNotasDataContext/Alumno" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0701d8ed-a889-4adf-a02b-bf4958d33ff6" absoluteBounds="0.515, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5c85d6d2-edcf-4e9b-9c16-018fbb85aafb" absoluteBounds="2.875, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataNotasDataContext/Curso" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e40baaf4-0f12-4461-ad1a-f77b306b29d5" absoluteBounds="2.8899999999999997, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="605a1ed8-3292-429d-b638-6fff3b977e65" absoluteBounds="1.25, 3.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataNotasDataContext/NOTA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5926a6f2-0ab7-473b-ab69-8e9ca007b6af" absoluteBounds="1.2650000000000001, 3.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

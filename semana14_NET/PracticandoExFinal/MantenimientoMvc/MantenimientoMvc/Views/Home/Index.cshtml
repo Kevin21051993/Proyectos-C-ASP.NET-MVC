@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MantenimientoMvc.Models.Alumno>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApeAlumno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomAlumno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.proce)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.especialidad.Nomesp)
+        </th>
+        <th>Imagen</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApeAlumno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomAlumno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.proce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.especialidad.Nomesp)
+        </td>
+        <td>
+            <img src="@Url.Content("~/Content/fOTOS/"+item.IdAlumno+".jpg")" alt="Alternate Text" width="70" height="70" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdAlumno }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdAlumno }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdAlumno }) |
+            @Html.ActionLink("Ver Notas", "../Consulta/NotaAlu", new { id = item.IdAlumno })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,51 @@
+﻿@model MantenimientoMvc.Models.Alumno
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Alumno</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApeAlumno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApeAlumno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomAlumno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomAlumno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proce)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proce)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.especialidad.Nomesp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.especialidad.Nomesp)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdAlumno }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

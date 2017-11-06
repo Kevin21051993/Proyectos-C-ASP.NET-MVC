@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bdnotasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="IdAlumno" />
+          </Key>
+          <Property Name="IdAlumno" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="ApeAlumno" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NomAlumno" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Idesp" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="proce" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdCurso" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="NomCurso" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="credito" Type="int" />
+        </EntityType>
+        <EntityType Name="especialidad">
+          <Key>
+            <PropertyRef Name="Idesp" />
+          </Key>
+          <Property Name="Idesp" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Nomesp" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="costo" Type="numeric" Precision="8" Scale="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOTAS">
+          <Key>
+            <PropertyRef Name="IdAlumno" />
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdAlumno" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="IdCurso" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="ExaParcial" Type="real" />
+          <Property Name="ExaFinal" Type="real" />
+        </EntityType>
+        <EntityType Name="PAGOS">
+          <Key>
+            <PropertyRef Name="IdAlumno" />
+            <PropertyRef Name="Ciclo" />
+            <PropertyRef Name="nCuota" />
+          </Key>
+          <Property Name="IdAlumno" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Ciclo" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="nCuota" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="numeric" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+        </EntityType>
+        <Function Name="SPADIALU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AP" Type="varchar" Mode="In" />
+          <Parameter Name="NOM" Type="varchar" Mode="In" />
+          <Parameter Name="ES" Type="char" Mode="In" />
+          <Parameter Name="PRO" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SPALU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spanula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cod" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SPcambia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cod" Type="char" Mode="In" />
+          <Parameter Name="AP" Type="varchar" Mode="In" />
+          <Parameter Name="NOM" Type="varchar" Mode="In" />
+          <Parameter Name="ES" Type="char" Mode="In" />
+          <Parameter Name="PRO" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SPESP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLISALU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spmes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="an" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spnota" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cod" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="bdnotasModelStoreContainer">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOTAS" EntityType="Self.NOTAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAGOS" EntityType="Self.PAGOS" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bdnotasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="IdAlumno" />
+          </Key>
+          <Property Name="IdAlumno" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ApeAlumno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomAlumno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Idesp" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="proce" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdCurso" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NomCurso" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="credito" Type="Int32" />
+        </EntityType>
+        <EntityType Name="especialidad">
+          <Key>
+            <PropertyRef Name="Idesp" />
+          </Key>
+          <Property Name="Idesp" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nomesp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="costo" Type="Decimal" Precision="8" Scale="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOTAS">
+          <Key>
+            <PropertyRef Name="IdAlumno" />
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdAlumno" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IdCurso" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ExaParcial" Type="Single" />
+          <Property Name="ExaFinal" Type="Single" />
+        </EntityType>
+        <EntityType Name="PAGOS">
+          <Key>
+            <PropertyRef Name="IdAlumno" />
+            <PropertyRef Name="Ciclo" />
+            <PropertyRef Name="nCuota" />
+          </Key>
+          <Property Name="IdAlumno" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ciclo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="nCuota" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="bdnotasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" />
+          <EntitySet Name="especialidad" EntityType="Self.especialidad" />
+          <EntitySet Name="NOTAS" EntityType="Self.NOTAS" />
+          <EntitySet Name="PAGOS" EntityType="Self.PAGOS" />
+          <FunctionImport Name="SPADIALU" ReturnType="Collection(String)">
+            <Parameter Name="AP" Mode="In" Type="String" />
+            <Parameter Name="NOM" Mode="In" Type="String" />
+            <Parameter Name="ES" Mode="In" Type="String" />
+            <Parameter Name="PRO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPALU" ReturnType="Collection(bdnotasModel.SPALU_Result)" />
+          <FunctionImport Name="spanula">
+            <Parameter Name="cod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPcambia">
+            <Parameter Name="cod" Mode="In" Type="String" />
+            <Parameter Name="AP" Mode="In" Type="String" />
+            <Parameter Name="NOM" Mode="In" Type="String" />
+            <Parameter Name="ES" Mode="In" Type="String" />
+            <Parameter Name="PRO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPESP" ReturnType="Collection(bdnotasModel.SPESP_Result)" />
+          <FunctionImport Name="SPLISALU" ReturnType="Collection(bdnotasModel.SPLISALU_Result)" />
+          <FunctionImport Name="spmes" ReturnType="Collection(bdnotasModel.spmes_Result)">
+            <Parameter Name="an" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spnota" ReturnType="Collection(bdnotasModel.spnota_Result)">
+            <Parameter Name="cod" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SPALU_Result">
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="61" />
+          <Property Type="String" Name="IdAlumno" Nullable="false" MaxLength="5" />
+        </ComplexType>
+        <ComplexType Name="SPESP_Result">
+          <Property Type="String" Name="Idesp" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="Nomesp" Nullable="false" MaxLength="30" />
+          <Property Type="Decimal" Name="costo" Nullable="false" Precision="8" Scale="1" />
+        </ComplexType>
+        <ComplexType Name="SPLISALU_Result">
+          <Property Type="String" Name="IdAlumno" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="ApeAlumno" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="NomAlumno" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Idesp" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="proce" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="spmes_Result">
+          <Property Type="String" Name="mes" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="total" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="spnota_Result">
+          <Property Type="String" Name="IdCurso" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="NomCurso" Nullable="false" MaxLength="35" />
+          <Property Type="Single" Name="ExaParcial" Nullable="true" />
+          <Property Type="Single" Name="ExaFinal" Nullable="true" />
+          <Property Type="Single" Name="promedio" Nullable="true" />
+          <Property Type="String" Name="observacion" Nullable="false" MaxLength="11" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bdnotasModelStoreContainer" CdmEntityContainer="bdnotasEntities">
+          <EntitySetMapping Name="Alumno">
+            <EntityTypeMapping TypeName="bdnotasModel.Alumno">
+              <MappingFragment StoreEntitySet="Alumno">
+                <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+                <ScalarProperty Name="ApeAlumno" ColumnName="ApeAlumno" />
+                <ScalarProperty Name="NomAlumno" ColumnName="NomAlumno" />
+                <ScalarProperty Name="Idesp" ColumnName="Idesp" />
+                <ScalarProperty Name="proce" ColumnName="proce" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Curso">
+            <EntityTypeMapping TypeName="bdnotasModel.Curso">
+              <MappingFragment StoreEntitySet="Curso">
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="NomCurso" ColumnName="NomCurso" />
+                <ScalarProperty Name="credito" ColumnName="credito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="especialidad">
+            <EntityTypeMapping TypeName="bdnotasModel.especialidad">
+              <MappingFragment StoreEntitySet="especialidad">
+                <ScalarProperty Name="Idesp" ColumnName="Idesp" />
+                <ScalarProperty Name="Nomesp" ColumnName="Nomesp" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOTAS">
+            <EntityTypeMapping TypeName="bdnotasModel.NOTAS">
+              <MappingFragment StoreEntitySet="NOTAS">
+                <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="ExaParcial" ColumnName="ExaParcial" />
+                <ScalarProperty Name="ExaFinal" ColumnName="ExaFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAGOS">
+            <EntityTypeMapping TypeName="bdnotasModel.PAGOS">
+              <MappingFragment StoreEntitySet="PAGOS">
+                <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+                <ScalarProperty Name="Ciclo" ColumnName="Ciclo" />
+                <ScalarProperty Name="nCuota" ColumnName="nCuota" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPADIALU" FunctionName="bdnotasModel.Store.SPADIALU" />
+          <FunctionImportMapping FunctionImportName="SPALU" FunctionName="bdnotasModel.Store.SPALU">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdnotasModel.SPALU_Result">
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spanula" FunctionName="bdnotasModel.Store.spanula" />
+          <FunctionImportMapping FunctionImportName="SPcambia" FunctionName="bdnotasModel.Store.SPcambia" />
+          <FunctionImportMapping FunctionImportName="SPESP" FunctionName="bdnotasModel.Store.SPESP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdnotasModel.SPESP_Result">
+                <ScalarProperty Name="Idesp" ColumnName="Idesp" />
+                <ScalarProperty Name="Nomesp" ColumnName="Nomesp" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPLISALU" FunctionName="bdnotasModel.Store.SPLISALU">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdnotasModel.SPLISALU_Result">
+                <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+                <ScalarProperty Name="ApeAlumno" ColumnName="ApeAlumno" />
+                <ScalarProperty Name="NomAlumno" ColumnName="NomAlumno" />
+                <ScalarProperty Name="Idesp" ColumnName="Idesp" />
+                <ScalarProperty Name="proce" ColumnName="proce" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spmes" FunctionName="bdnotasModel.Store.spmes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdnotasModel.spmes_Result">
+                <ScalarProperty Name="mes" ColumnName="mes" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spnota" FunctionName="bdnotasModel.Store.spnota">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdnotasModel.spnota_Result">
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="NomCurso" ColumnName="NomCurso" />
+                <ScalarProperty Name="ExaParcial" ColumnName="ExaParcial" />
+                <ScalarProperty Name="ExaFinal" ColumnName="ExaFinal" />
+                <ScalarProperty Name="promedio" ColumnName="promedio" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

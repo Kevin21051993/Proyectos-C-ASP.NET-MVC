@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MvcNotas.Models.especialidad>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Especialidades</h2>
+
+<!--
+<p>
+    @**@Html.ActionLink("Create New", "Create")
+</p>
+-->
+<table class="table">
+    <tr>
+        <th>
+            Código
+        </th>
+        <th>
+            Especialidad
+        </th>
+        <th>
+            Costo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Idesp
+        </td>
+        <td>
+            @item.Nomesp
+        </td>
+        <td>
+            @item.costo
+        </td>
+        <td>
+            @Html.ActionLink("Ver Alumnos", "LisAlu", new { id=item.Idesp, nomEs=item.Nomesp })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PryMatricula.Models.TABESP>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Especialidades</h2>
+<!--
+<p>
+    @**@Html.ActionLink("Create New", "Create")
+</p>
+-->
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CODESP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMESP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODESP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMESP)
+        </td>
+        <td>
+            @Html.ActionLink("Cursos", "Cursos", new { id=item.CODESP, nomE=item.NOMESP })
+        </td>
+    </tr>
+}
+
+</table>

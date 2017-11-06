@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PryMatricula.Models.ALUMNO>
+
+@{
+    ViewBag.Title = "Alumnos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Alumnos del curso @ViewBag.nomC</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NROMAT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CODCUR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APENOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PAGO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NROMAT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODCUR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APENOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PAGO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

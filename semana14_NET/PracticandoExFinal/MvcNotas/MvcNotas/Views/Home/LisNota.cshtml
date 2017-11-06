@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MvcNotas.Models.spnota_Result>
+
+@{
+    ViewBag.Title = "LisNota";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Notas del alumno @ViewBag.nomAl</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdCurso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomCurso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExaParcial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExaFinal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.promedio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.observacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdCurso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomCurso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExaParcial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExaFinal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.promedio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.observacion)
+        </td>        
+    </tr>
+}
+
+</table>

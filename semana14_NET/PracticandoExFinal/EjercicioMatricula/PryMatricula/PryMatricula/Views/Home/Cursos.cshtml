@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PryMatricula.Models.CURSO>
+
+@{
+    ViewBag.Title = "Cursos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cursos de la especialidad @ViewBag.nomEs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CODCUR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CODESP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMCUR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COSTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nrovac)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODCUR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODESP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMCUR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COSTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nrovac)
+        </td>
+        <td>
+            @Html.ActionLink("Alumnos", "../ALUMNO/Index", new { id=item.CODCUR, nomCur=item.NOMCUR, costo=item.COSTO })
+        </td>
+    </tr>
+}
+
+</table>

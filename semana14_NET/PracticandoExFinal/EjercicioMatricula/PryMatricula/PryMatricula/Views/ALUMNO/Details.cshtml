@@ -1,0 +1,51 @@
+﻿@model PryMatricula.Models.ALUMNO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ALUMNO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CODCUR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODCUR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APENOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APENOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PAGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAGO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NROMAT }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

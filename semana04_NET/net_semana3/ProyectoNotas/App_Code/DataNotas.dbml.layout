@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataNotas">
+  <DataContextMoniker Name="/DataNotasDataContext" />
+  <nestedChildShapes>
+    <classShape Id="47e5744d-7c39-427a-94a5-02265d94c681" absoluteBounds="0.5, 0.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataNotasDataContext/Alumno" />
+      <nestedChildShapes>
+        <elementListCompartment Id="232d5d4b-689f-4806-8145-7b461d46dde8" absoluteBounds="0.515, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6c2ab190-7769-4b71-9039-7a540d1b8f50" absoluteBounds="3, 1.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataNotasDataContext/Curso" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7e71495e-e67c-444e-862c-90c55d1d4788" absoluteBounds="3.015, 1.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="56bb19f9-2f94-436e-9565-b6234c3a94d7" absoluteBounds="0.75, 3.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataNotasDataContext/especialidad" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bda76fc5-72b1-4d02-ac52-7bfbd7a69aba" absoluteBounds="0.765, 3.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="68f3bb70-dbac-4b0f-8535-7d03468422c4" absoluteBounds="3.25, 3.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataNotasDataContext/NOTA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5d8081a-76c3-43f3-8674-28bb03893b9b" absoluteBounds="3.265, 3.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fb780d17-6745-42d8-bf99-d00e44bac598" absoluteBounds="0.75, 4.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataNotasDataContext/PAGO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="24d82b06-a863-4693-a8eb-6f3e6cbcc441" absoluteBounds="0.765, 5.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

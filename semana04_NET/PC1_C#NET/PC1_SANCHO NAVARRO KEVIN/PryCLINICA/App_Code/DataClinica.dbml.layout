@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClinica">
+  <DataContextMoniker Name="/DataClinicaDataContext" />
+  <nestedChildShapes>
+    <classShape Id="d8b01644-9e60-4a9e-8642-410c0832ab94" absoluteBounds="0.75, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataClinicaDataContext/Citas" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c1e9020b-4dc2-456e-9f1e-6e8bad22d441" absoluteBounds="0.765, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fe761b5b-5cc0-4ba6-8129-f0868b69336f" absoluteBounds="3.125, 1.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataClinicaDataContext/Medicos" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8beac2d4-092e-4c41-b01c-e392047b1656" absoluteBounds="3.14, 1.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b25d0145-6c13-4f57-8c8b-734f560db3bc" absoluteBounds="2.5, 3.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataClinicaDataContext/tabesp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="001e1b8f-d660-4caf-86e6-3efad7ddd20c" absoluteBounds="2.515, 3.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

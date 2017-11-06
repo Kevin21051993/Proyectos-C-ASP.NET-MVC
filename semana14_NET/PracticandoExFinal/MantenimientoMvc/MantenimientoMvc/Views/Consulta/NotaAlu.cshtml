@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MantenimientoMvc.Models.CursoNota>
+
+@{
+    ViewBag.Title = "NotaAlu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>NotaAlu</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.exp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.exf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.obser)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.exp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.exf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.obser)
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+}
+
+</table>

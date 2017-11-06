@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MvcNotas.Models.Alumno>
+
+@{
+    ViewBag.Title = "LisAlu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Alumnos de la especialidad @ViewBag.nomEsp</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Código
+        </th>
+        <th>
+            Apellido
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Especialidad
+        </th>
+        <th>
+            Procedencia
+        </th>
+        <th>
+            Ver Pagos
+        </th>
+        <th>
+            Ver Notas
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.IdAlumno
+        </td>
+        <td>
+            @item.ApeAlumno
+        </td>
+        <td>
+            @item.NomAlumno
+        </td>
+        <td>
+            @item.Idesp
+        </td>
+        <td>
+            @item.proce
+        </td>
+        <td>
+            @Html.ActionLink("Ver Pagos", "LisPago", new { id=item.IdAlumno, nomAl=item.NomAlumno })
+            
+        </td>
+        <td>
+            @Html.ActionLink("Ver Notas", "LisNota", new { id = item.IdAlumno, nomAl = item.NomAlumno })
+        </td>
+    </tr>
+}
+
+</table>

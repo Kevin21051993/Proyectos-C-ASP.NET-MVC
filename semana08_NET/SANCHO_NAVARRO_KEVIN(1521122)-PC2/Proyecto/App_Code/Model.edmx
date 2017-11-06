@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bdArtefactoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Artefacto">
+          <Key>
+            <PropertyRef Name="art_cod" />
+          </Key>
+          <Property Name="art_cod" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Lin_cod" Type="char" MaxLength="2" />
+          <Property Name="art_nom" Type="varchar" MaxLength="30" />
+          <Property Name="art_pre" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="art_img" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Calendario">
+          <Key>
+            <PropertyRef Name="nro_pro" />
+            <PropertyRef Name="nro_cuota" />
+          </Key>
+          <Property Name="nro_pro" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="nro_cuota" Type="int" Nullable="false" />
+          <Property Name="monto" Type="decimal" Precision="10" Scale="1" />
+          <Property Name="saldo" Type="decimal" Precision="10" Scale="1" />
+          <Property Name="fecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="cli_cod" />
+          </Key>
+          <Property Name="cli_cod" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="cli_nom" Type="varchar" MaxLength="25" />
+          <Property Name="cli_tel" Type="numeric" Precision="7" Scale="0" />
+          <Property Name="cli_ruc" Type="numeric" Precision="11" Scale="0" />
+          <Property Name="cli_dir" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Linea">
+          <Key>
+            <PropertyRef Name="Lin_cod" />
+          </Key>
+          <Property Name="Lin_cod" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Lin_nom" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="proforma">
+          <Key>
+            <PropertyRef Name="nro_pro" />
+          </Key>
+          <Property Name="nro_pro" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="cli_cod" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="art_cod" Type="char" MaxLength="5" />
+          <Property Name="precio" Type="numeric" Precision="11" Scale="0" />
+          <Property Name="tipo_ven" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <Function Name="sp_Adi_Cli" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NOM" Type="varchar" Mode="In" />
+          <Parameter Name="TEL" Type="numeric" Mode="In" />
+          <Parameter Name="RUC" Type="numeric" Mode="In" />
+          <Parameter Name="DIREC" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Adi_Prof" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CODCLI" Type="char" Mode="In" />
+          <Parameter Name="CODART" Type="char" Mode="In" />
+          <Parameter Name="PREC" Type="numeric" Mode="In" />
+          <Parameter Name="TIPVEN" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ArtefactosxLinea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CODLIN" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_Elim_Cli" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COD" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_ListarProfConFormato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VAR" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ListarProfConFormato2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CODCLI" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_Modi_Cli" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COD" Type="char" Mode="In" />
+          <Parameter Name="NOM" Type="varchar" Mode="In" />
+          <Parameter Name="TEL" Type="numeric" Mode="In" />
+          <Parameter Name="RUC" Type="numeric" Mode="In" />
+          <Parameter Name="DIREC" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="bdArtefactoModelStoreContainer">
+          <EntitySet Name="Artefacto" EntityType="Self.Artefacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calendario" EntityType="Self.Calendario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Linea" EntityType="Self.Linea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proforma" EntityType="Self.proforma" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bdArtefactoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Artefacto">
+          <Key>
+            <PropertyRef Name="art_cod" />
+          </Key>
+          <Property Name="art_cod" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Lin_cod" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="art_nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="art_pre" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="art_img" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Calendario">
+          <Key>
+            <PropertyRef Name="nro_pro" />
+            <PropertyRef Name="nro_cuota" />
+          </Key>
+          <Property Name="nro_pro" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="nro_cuota" Type="Int32" Nullable="false" />
+          <Property Name="monto" Type="Decimal" Precision="10" Scale="1" />
+          <Property Name="saldo" Type="Decimal" Precision="10" Scale="1" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="cli_cod" />
+          </Key>
+          <Property Name="cli_cod" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cli_nom" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="cli_tel" Type="Decimal" Precision="7" Scale="0" />
+          <Property Name="cli_ruc" Type="Decimal" Precision="11" Scale="0" />
+          <Property Name="cli_dir" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Linea">
+          <Key>
+            <PropertyRef Name="Lin_cod" />
+          </Key>
+          <Property Name="Lin_cod" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Lin_nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="proforma">
+          <Key>
+            <PropertyRef Name="nro_pro" />
+          </Key>
+          <Property Name="nro_pro" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cli_cod" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="art_cod" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="precio" Type="Decimal" Precision="11" Scale="0" />
+          <Property Name="tipo_ven" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="bdArtefactoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Artefacto" EntityType="Self.Artefacto" />
+          <EntitySet Name="Calendario" EntityType="Self.Calendario" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Linea" EntityType="Self.Linea" />
+          <EntitySet Name="proforma" EntityType="Self.proforma" />
+          <FunctionImport Name="sp_Adi_Cli">
+            <Parameter Name="NOM" Mode="In" Type="String" />
+            <Parameter Name="TEL" Mode="In" Type="Decimal" />
+            <Parameter Name="RUC" Mode="In" Type="Decimal" />
+            <Parameter Name="DIREC" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Adi_Prof">
+            <Parameter Name="CODCLI" Mode="In" Type="String" />
+            <Parameter Name="CODART" Mode="In" Type="String" />
+            <Parameter Name="PREC" Mode="In" Type="Decimal" />
+            <Parameter Name="TIPVEN" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ArtefactosxLinea" ReturnType="Collection(bdArtefactoModel.sp_ArtefactosxLinea_Result)">
+            <Parameter Name="CODLIN" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Elim_Cli">
+            <Parameter Name="COD" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ListarProfConFormato" ReturnType="Collection(bdArtefactoModel.sp_ListarProfConFormato_Result)">
+            <Parameter Name="VAR" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ListarProfConFormato2" ReturnType="Collection(bdArtefactoModel.sp_ListarProfConFormato2_Result)">
+            <Parameter Name="CODCLI" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Modi_Cli">
+            <Parameter Name="COD" Mode="In" Type="String" />
+            <Parameter Name="NOM" Mode="In" Type="String" />
+            <Parameter Name="TEL" Mode="In" Type="Decimal" />
+            <Parameter Name="RUC" Mode="In" Type="Decimal" />
+            <Parameter Name="DIREC" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_ArtefactosxLinea_Result">
+          <Property Type="String" Name="art_cod" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="Lin_cod" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="art_nom" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="art_pre" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="art_img" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarProfConFormato_Result">
+          <Property Type="String" Name="nro_pro" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="cli_cod" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="art_cod" Nullable="true" MaxLength="5" />
+          <Property Type="Decimal" Name="precio" Nullable="true" Precision="11" Scale="0" />
+          <Property Type="Int32" Name="meses" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarProfConFormato2_Result">
+          <Property Type="String" Name="nro_pro" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="cli_cod" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="art_cod" Nullable="true" MaxLength="5" />
+          <Property Type="Decimal" Name="precio" Nullable="true" Precision="11" Scale="0" />
+          <Property Type="Int32" Name="meses" Nullable="true" />
+          <Property Type="Decimal" Name="interes" Nullable="true" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="saldo" Nullable="true" Precision="15" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bdArtefactoModelStoreContainer" CdmEntityContainer="bdArtefactoEntities">
+          <EntitySetMapping Name="Artefacto">
+            <EntityTypeMapping TypeName="bdArtefactoModel.Artefacto">
+              <MappingFragment StoreEntitySet="Artefacto">
+                <ScalarProperty Name="art_cod" ColumnName="art_cod" />
+                <ScalarProperty Name="Lin_cod" ColumnName="Lin_cod" />
+                <ScalarProperty Name="art_nom" ColumnName="art_nom" />
+                <ScalarProperty Name="art_pre" ColumnName="art_pre" />
+                <ScalarProperty Name="art_img" ColumnName="art_img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calendario">
+            <EntityTypeMapping TypeName="bdArtefactoModel.Calendario">
+              <MappingFragment StoreEntitySet="Calendario">
+                <ScalarProperty Name="nro_pro" ColumnName="nro_pro" />
+                <ScalarProperty Name="nro_cuota" ColumnName="nro_cuota" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="bdArtefactoModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="cli_cod" ColumnName="cli_cod" />
+                <ScalarProperty Name="cli_nom" ColumnName="cli_nom" />
+                <ScalarProperty Name="cli_tel" ColumnName="cli_tel" />
+                <ScalarProperty Name="cli_ruc" ColumnName="cli_ruc" />
+                <ScalarProperty Name="cli_dir" ColumnName="cli_dir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Linea">
+            <EntityTypeMapping TypeName="bdArtefactoModel.Linea">
+              <MappingFragment StoreEntitySet="Linea">
+                <ScalarProperty Name="Lin_cod" ColumnName="Lin_cod" />
+                <ScalarProperty Name="Lin_nom" ColumnName="Lin_nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proforma">
+            <EntityTypeMapping TypeName="bdArtefactoModel.proforma">
+              <MappingFragment StoreEntitySet="proforma">
+                <ScalarProperty Name="nro_pro" ColumnName="nro_pro" />
+                <ScalarProperty Name="cli_cod" ColumnName="cli_cod" />
+                <ScalarProperty Name="art_cod" ColumnName="art_cod" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="tipo_ven" ColumnName="tipo_ven" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_Adi_Cli" FunctionName="bdArtefactoModel.Store.sp_Adi_Cli" />
+          <FunctionImportMapping FunctionImportName="sp_Adi_Prof" FunctionName="bdArtefactoModel.Store.sp_Adi_Prof" />
+          <FunctionImportMapping FunctionImportName="sp_ArtefactosxLinea" FunctionName="bdArtefactoModel.Store.sp_ArtefactosxLinea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdArtefactoModel.sp_ArtefactosxLinea_Result">
+                <ScalarProperty Name="art_cod" ColumnName="art_cod" />
+                <ScalarProperty Name="Lin_cod" ColumnName="Lin_cod" />
+                <ScalarProperty Name="art_nom" ColumnName="art_nom" />
+                <ScalarProperty Name="art_pre" ColumnName="art_pre" />
+                <ScalarProperty Name="art_img" ColumnName="art_img" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Elim_Cli" FunctionName="bdArtefactoModel.Store.sp_Elim_Cli" />
+          <FunctionImportMapping FunctionImportName="sp_ListarProfConFormato" FunctionName="bdArtefactoModel.Store.sp_ListarProfConFormato">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdArtefactoModel.sp_ListarProfConFormato_Result">
+                <ScalarProperty Name="nro_pro" ColumnName="nro_pro" />
+                <ScalarProperty Name="cli_cod" ColumnName="cli_cod" />
+                <ScalarProperty Name="art_cod" ColumnName="art_cod" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="meses" ColumnName="meses" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarProfConFormato2" FunctionName="bdArtefactoModel.Store.sp_ListarProfConFormato2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdArtefactoModel.sp_ListarProfConFormato2_Result">
+                <ScalarProperty Name="nro_pro" ColumnName="nro_pro" />
+                <ScalarProperty Name="cli_cod" ColumnName="cli_cod" />
+                <ScalarProperty Name="art_cod" ColumnName="art_cod" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="meses" ColumnName="meses" />
+                <ScalarProperty Name="interes" ColumnName="interes" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Modi_Cli" FunctionName="bdArtefactoModel.Store.sp_Modi_Cli" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

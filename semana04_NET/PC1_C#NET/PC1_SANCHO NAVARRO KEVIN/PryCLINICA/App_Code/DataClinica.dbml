@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDCLINICA" Class="DataClinicaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-P9TF96F\MSSQLSERVEREXP;Initial Catalog=BDCLINICA;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BDCLINICAConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Citas" Member="Citas">
+    <Type Name="Citas">
+      <Column Name="nrocita" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codmed" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="nompac" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="tipo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pago" Type="System.Decimal" DbType="Decimal(8,1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Medicos" Member="Medicos">
+    <Type Name="Medicos">
+      <Column Name="codmed" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codes" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="colegiatura" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tabesp" Member="tabesp">
+    <Type Name="tabesp">
+      <Column Name="code" Type="System.String" DbType="Char(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="costo" Type="System.Decimal" DbType="Decimal(6,1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spAdiCita" Method="spAdiCita">
+    <Parameter Name="codMed" Type="System.String" DbType="Char(4)" />
+    <Parameter Name="nomPac" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="tipo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pago" Type="System.Decimal" DbType="Decimal(8,1)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

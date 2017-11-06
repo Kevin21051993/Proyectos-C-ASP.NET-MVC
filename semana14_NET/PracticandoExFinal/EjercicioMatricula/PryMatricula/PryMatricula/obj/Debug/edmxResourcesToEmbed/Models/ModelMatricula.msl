@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bdMatriculaModelStoreContainer" CdmEntityContainer="bdMatriculaEntities">
+    <EntitySetMapping Name="ALUMNO">
+      <EntityTypeMapping TypeName="bdMatriculaModel.ALUMNO">
+        <MappingFragment StoreEntitySet="ALUMNO">
+          <ScalarProperty Name="NROMAT" ColumnName="NROMAT" />
+          <ScalarProperty Name="CODCUR" ColumnName="CODCUR" />
+          <ScalarProperty Name="APENOM" ColumnName="APENOM" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="PAGO" ColumnName="PAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSO">
+      <EntityTypeMapping TypeName="bdMatriculaModel.CURSO">
+        <MappingFragment StoreEntitySet="CURSO">
+          <ScalarProperty Name="CODCUR" ColumnName="CODCUR" />
+          <ScalarProperty Name="CODESP" ColumnName="CODESP" />
+          <ScalarProperty Name="NOMCUR" ColumnName="NOMCUR" />
+          <ScalarProperty Name="COSTO" ColumnName="COSTO" />
+          <ScalarProperty Name="Nrovac" ColumnName="Nrovac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TABESP">
+      <EntityTypeMapping TypeName="bdMatriculaModel.TABESP">
+        <MappingFragment StoreEntitySet="TABESP">
+          <ScalarProperty Name="CODESP" ColumnName="CODESP" />
+          <ScalarProperty Name="NOMESP" ColumnName="NOMESP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spadiAlu" FunctionName="bdMatriculaModel.Store.spadiAlu" />
+  </EntityContainerMapping>
+</Mapping>

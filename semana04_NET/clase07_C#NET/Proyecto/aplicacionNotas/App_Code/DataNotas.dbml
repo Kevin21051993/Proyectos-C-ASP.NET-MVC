@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="bdnotas" Class="DataNotasDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=bdnotas;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="bdnotasConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Alumno" Member="Alumnos">
+    <Type Name="Alumno">
+      <Column Name="IdAlumno" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ApeAlumno" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="NomAlumno" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Idesp" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="proce" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Curso" Member="Cursos">
+    <Type Name="Curso">
+      <Column Name="IdCurso" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NomCurso" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="credito" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NOTAS" Member="NOTAs">
+    <Type Name="NOTA">
+      <Column Name="IdAlumno" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdCurso" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ExaParcial" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="ExaFinal" Type="System.Single" DbType="Real" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spadiAlu" Method="spadiAlu">
+    <Parameter Name="ape" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="nom" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="es" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="pro" Type="System.Char" DbType="Char(1)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spDelAlu" Method="spDelAlu">
+    <Parameter Name="coda" Type="System.String" DbType="Char(5)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spmodiAlu" Method="spmodiAlu">
+    <Parameter Name="cod" Type="System.String" DbType="Char(5)" />
+    <Parameter Name="ape" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="nom" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="es" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="pro" Type="System.Char" DbType="Char(1)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spnota" Method="spnota">
+    <Parameter Name="cod" Type="System.String" DbType="Char(5)" />
+    <ElementType Name="spnotaResult">
+      <Column Name="idcurso" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="nomcurso" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="exaparcial" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="exafinal" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="prom" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="obser" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spcurso" Method="spcurso">
+    <Parameter Name="cod" Type="System.String" DbType="Char(4)" />
+    <ElementType Name="spcursoResult">
+      <Column Name="IdAlumno" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="ApeAlumno" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="NomAlumno" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="exaparcial" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="exafinal" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="prom" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="obser" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

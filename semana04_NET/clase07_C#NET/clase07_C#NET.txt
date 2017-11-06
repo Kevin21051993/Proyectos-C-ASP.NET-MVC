@@ -1,0 +1,12 @@
+
+
+
+
+
+
+
+**Lo que uno genera con el Linq es un diagrama de clases.
+
+1°) DISEÑAR EL FORMULARIO
+2°) Programas el LOAD: Aquí cargamos el combobox y lo asociamos al CONTEXTO notas
+     El DataNotasDataContext es para 

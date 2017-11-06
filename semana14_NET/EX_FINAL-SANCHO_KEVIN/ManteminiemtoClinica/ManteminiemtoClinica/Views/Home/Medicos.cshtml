@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ManteminiemtoClinica.Models.Medicos>
+
+@{
+    ViewBag.Title = "Medicos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Medicos de la especialidad @ViewBag.nomEsp</h2>
+
+<table>
+    <tr>
+        <th>
+            Foto
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.colegiatura)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="@Url.Content("~/Content/Imagenes/"+item.codmed+".jpg")" alt="Alternate Text" width="70" height="70" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.colegiatura)
+        </td>
+        <td>
+            @Html.ActionLink("Ver Pacientes", "../Pacientes/Index", new { id=item.codmed, nomMed=item.nombre, coleg=item.colegiatura })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MvcNotas.Models.PAGOS>
+
+@{
+    ViewBag.Title = "LisPago";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pagos del alumno @ViewBag.nomAl</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciclo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nCuota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ciclo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nCuota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+    </tr>
+}
+
+</table>

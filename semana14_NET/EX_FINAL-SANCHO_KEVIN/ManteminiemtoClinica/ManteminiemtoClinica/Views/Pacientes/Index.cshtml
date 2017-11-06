@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ManteminiemtoClinica.Models.Citas>
+
+@{
+    ViewBag.Title = "Index";
+    string nomMedico = (string)Session["nomMed"];
+}
+
+<h2>Pacientes del médico @nomMedico </h2> 
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @nomMedico
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nrocita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nompac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pago)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nrocita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nompac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pago)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.nrocita })
+        </td>
+    </tr>
+}
+
+</table>

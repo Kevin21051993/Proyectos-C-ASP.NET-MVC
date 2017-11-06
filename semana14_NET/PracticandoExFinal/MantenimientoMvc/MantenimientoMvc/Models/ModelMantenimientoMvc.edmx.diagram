@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="544a59d92a434a90881ff9b55ff39dfc" Name="Diagram1">
+        <EntityTypeShape EntityType="bdnotasModel.Alumno" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdnotasModel.Curso" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdnotasModel.especialidad" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdnotasModel.NOTAS" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdnotasModel.PAGOS" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="bdnotasModel.fk_Alumno_especialidad" ManuallyRouted="false" />
+        <AssociationConnector Association="bdnotasModel.fk_Notas_Alumno" ManuallyRouted="false" />
+        <AssociationConnector Association="bdnotasModel.fk_PAGOS_Alumno" ManuallyRouted="false" />
+        <AssociationConnector Association="bdnotasModel.fk_Notas_Curso" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

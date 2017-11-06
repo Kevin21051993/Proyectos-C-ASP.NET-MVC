@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdnotasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="IdAlumno" />
+    </Key>
+    <Property Name="IdAlumno" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="ApeAlumno" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="NomAlumno" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Idesp" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="proce" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="IdCurso" />
+    </Key>
+    <Property Name="IdCurso" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="NomCurso" Type="varchar" MaxLength="35" Nullable="false" />
+    <Property Name="credito" Type="int" />
+  </EntityType>
+  <EntityType Name="especialidad">
+    <Key>
+      <PropertyRef Name="Idesp" />
+    </Key>
+    <Property Name="Idesp" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="Nomesp" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="costo" Type="numeric" Precision="8" Scale="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTAS">
+    <Key>
+      <PropertyRef Name="IdAlumno" />
+      <PropertyRef Name="IdCurso" />
+    </Key>
+    <Property Name="IdAlumno" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="IdCurso" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="ExaParcial" Type="real" />
+    <Property Name="ExaFinal" Type="real" />
+  </EntityType>
+  <EntityType Name="PAGOS">
+    <Key>
+      <PropertyRef Name="IdAlumno" />
+      <PropertyRef Name="Ciclo" />
+      <PropertyRef Name="nCuota" />
+    </Key>
+    <Property Name="IdAlumno" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Ciclo" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="nCuota" Type="int" Nullable="false" />
+    <Property Name="Monto" Type="numeric" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" />
+  </EntityType>
+  <Function Name="SPADIALU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AP" Type="varchar" Mode="In" />
+    <Parameter Name="NOM" Type="varchar" Mode="In" />
+    <Parameter Name="ES" Type="char" Mode="In" />
+    <Parameter Name="PRO" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SPALU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spanula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cod" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SPcambia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cod" Type="char" Mode="In" />
+    <Parameter Name="AP" Type="varchar" Mode="In" />
+    <Parameter Name="NOM" Type="varchar" Mode="In" />
+    <Parameter Name="ES" Type="char" Mode="In" />
+    <Parameter Name="PRO" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SPESP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SPLISALU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spmes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="an" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spnota" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cod" Type="char" Mode="In" />
+  </Function>
+  <EntityContainer Name="bdnotasModelStoreContainer">
+    <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NOTAS" EntityType="Self.NOTAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAGOS" EntityType="Self.PAGOS" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

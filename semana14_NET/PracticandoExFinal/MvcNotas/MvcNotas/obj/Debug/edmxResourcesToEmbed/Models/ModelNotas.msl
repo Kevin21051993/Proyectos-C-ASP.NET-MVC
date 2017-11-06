@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bdnotasModelStoreContainer" CdmEntityContainer="bdnotasEntities">
+    <EntitySetMapping Name="Alumno">
+      <EntityTypeMapping TypeName="bdnotasModel.Alumno">
+        <MappingFragment StoreEntitySet="Alumno">
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="ApeAlumno" ColumnName="ApeAlumno" />
+          <ScalarProperty Name="NomAlumno" ColumnName="NomAlumno" />
+          <ScalarProperty Name="Idesp" ColumnName="Idesp" />
+          <ScalarProperty Name="proce" ColumnName="proce" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Curso">
+      <EntityTypeMapping TypeName="bdnotasModel.Curso">
+        <MappingFragment StoreEntitySet="Curso">
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+          <ScalarProperty Name="NomCurso" ColumnName="NomCurso" />
+          <ScalarProperty Name="credito" ColumnName="credito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="especialidad">
+      <EntityTypeMapping TypeName="bdnotasModel.especialidad">
+        <MappingFragment StoreEntitySet="especialidad">
+          <ScalarProperty Name="Idesp" ColumnName="Idesp" />
+          <ScalarProperty Name="Nomesp" ColumnName="Nomesp" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTAS">
+      <EntityTypeMapping TypeName="bdnotasModel.NOTAS">
+        <MappingFragment StoreEntitySet="NOTAS">
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+          <ScalarProperty Name="ExaParcial" ColumnName="ExaParcial" />
+          <ScalarProperty Name="ExaFinal" ColumnName="ExaFinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAGOS">
+      <EntityTypeMapping TypeName="bdnotasModel.PAGOS">
+        <MappingFragment StoreEntitySet="PAGOS">
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="Ciclo" ColumnName="Ciclo" />
+          <ScalarProperty Name="nCuota" ColumnName="nCuota" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SPADIALU" FunctionName="bdnotasModel.Store.SPADIALU" />
+    <FunctionImportMapping FunctionImportName="SPALU" FunctionName="bdnotasModel.Store.SPALU">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bdnotasModel.SPALU_Result">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spanula" FunctionName="bdnotasModel.Store.spanula" />
+    <FunctionImportMapping FunctionImportName="SPcambia" FunctionName="bdnotasModel.Store.SPcambia" />
+    <FunctionImportMapping FunctionImportName="SPESP" FunctionName="bdnotasModel.Store.SPESP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bdnotasModel.SPESP_Result">
+          <ScalarProperty Name="Idesp" ColumnName="Idesp" />
+          <ScalarProperty Name="Nomesp" ColumnName="Nomesp" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPLISALU" FunctionName="bdnotasModel.Store.SPLISALU">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bdnotasModel.SPLISALU_Result">
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="ApeAlumno" ColumnName="ApeAlumno" />
+          <ScalarProperty Name="NomAlumno" ColumnName="NomAlumno" />
+          <ScalarProperty Name="Idesp" ColumnName="Idesp" />
+          <ScalarProperty Name="proce" ColumnName="proce" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spmes" FunctionName="bdnotasModel.Store.spmes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bdnotasModel.spmes_Result">
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spnota" FunctionName="bdnotasModel.Store.spnota">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bdnotasModel.spnota_Result">
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+          <ScalarProperty Name="NomCurso" ColumnName="NomCurso" />
+          <ScalarProperty Name="ExaParcial" ColumnName="ExaParcial" />
+          <ScalarProperty Name="ExaFinal" ColumnName="ExaFinal" />
+          <ScalarProperty Name="promedio" ColumnName="promedio" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

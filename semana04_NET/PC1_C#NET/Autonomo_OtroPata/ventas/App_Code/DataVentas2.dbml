@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="bdventas" Class="DataVentas2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=bdventas;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="bdventasConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Articulos" Member="Articulos">
+    <Type Name="Articulos">
+      <Column Name="art_cod" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="art_nom" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="art_uni" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="art_pre" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="art_stk" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Clientes" Member="Clientes">
+    <Type Name="Clientes">
+      <Column Name="cli_cod" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cli_nom" Type="System.String" DbType="VarChar(35)" CanBeNull="true" />
+      <Column Name="cli_tel" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+      <Column Name="cli_cor" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cli_dir" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cli_cre" Type="System.Decimal" DbType="Decimal(8,1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Fac_cabe" Member="Fac_cabe">
+    <Type Name="Fac_cabe">
+      <Column Name="fac_num" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="fac_fec" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="cli_cod" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="fac_igv" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ven_cod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Fac_deta" Member="Fac_deta">
+    <Type Name="Fac_deta">
+      <Column Name="fac_num" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="art_cod" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="art_can" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vendedor" Member="Vendedor">
+    <Type Name="Vendedor">
+      <Column Name="Ven_cod" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ven_nom" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Ven_Fig" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SPDETA" Method="SPDETA">
+    <Parameter Name="FAC" Parameter="fAC" Type="System.String" DbType="Char(5)" />
+    <ElementType Name="SPDETAResult">
+      <Column Name="ART_COD" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="ART_NOM" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ART_PRE" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ART_CAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TOTAL" Type="System.Decimal" DbType="Decimal(21,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

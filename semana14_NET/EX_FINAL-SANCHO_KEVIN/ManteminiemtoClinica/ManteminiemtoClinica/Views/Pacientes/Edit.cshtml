@@ -1,0 +1,68 @@
+﻿@model ManteminiemtoClinica.Models.Citas
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Citas</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nrocita)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nrocita)
+            @Html.ValidationMessageFor(model => model.nrocita)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.codmed)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.codmed)
+            @Html.ValidationMessageFor(model => model.codmed)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nompac)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nompac)
+            @Html.ValidationMessageFor(model => model.nompac)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tipo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tipo)
+            @Html.ValidationMessageFor(model => model.tipo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pago)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pago)
+            @Html.ValidationMessageFor(model => model.pago)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
